@@ -104,7 +104,7 @@ name, version number, and the full path to the module.  For example,
 module is referenced by package name, semver range, and the full path to the 
 module.  For example, `require('phosphor@^0.6.0/lib/ui/tabpanel.js')`.  
 
-By using a server range, JupyterLab can perform client-side deduplication of 
+By using a semver range, JupyterLab can perform client-side deduplication of 
 modules, where the registered module that maximally satisfies a semver range 
 is the one  returned by the `require` function call.  This also enables us to 
 perform  server-side deduplication of modules prior to serving the bundles, 
@@ -112,7 +112,7 @@ and the client-side lookup will still load the correct modules.
 
 Reasons to deduplicate code include:
 
-- being able to use `instanceof()` on an object to determine if it is the same class (a technique used by phosphor's drag-drop mechanism)
+- being able to use the `instanceof` operator on an object to determine if it is the same class (a technique used by phosphor's drag-drop mechanism)
 - sharing of module-private state between different consumers, such as a list of client-side running kernels in `jupyter-js-services`.
 
 All client-side `require()` calls are synchronous, which means that the 
